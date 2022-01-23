@@ -6,7 +6,7 @@ export default function DayListItem(props) {
 
   let buttonClass = classNames('day-list__item', { "day-list__item--selected": props.selected }, { "day-list__item--full": props.spots === 0 });
 
-  console.log(props.name);
+  //console.log(props.name);
 
   const formatSpots = function(spots){
     if(spots === 0) {
