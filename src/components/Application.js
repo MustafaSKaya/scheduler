@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Appointment from "./Appointment";
 import axios from "axios";
 import getAppointmentsForDay, { getInterview } from "helpers/selectors";
+import useVisualMode from "hooks/useVisualMode";
 
 export default function Application(props) {
 
