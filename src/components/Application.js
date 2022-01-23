@@ -17,21 +17,8 @@ export default function Application(props) {
   const setDay = (day => 
     setState({ ...state, day })
   );
-
-  //const setDays = ((days) => {
-  //  setState(prev => ({ ...prev, days }));
-  //});
-
+  
   const dailyAppoinments = getAppointmentsForDay(state, state.day);
-
-  /*useEffect(() => {
-    axios.get("/api/days")
-      .then((response) => {
-        console.log(response.data);
-        setDays([...response.data]);
-      })
-      .catch(err=> {console.log(err)});  
-  }, []);*/
 
   useEffect(() => {
     Promise.all([
