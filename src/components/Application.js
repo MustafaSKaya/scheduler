@@ -4,7 +4,7 @@ import "components/Application.scss";
 import React, { useState, useEffect } from "react";
 import Appointment from "./Appointment";
 import axios from "axios";
-import getAppointmentsForDay, { getInterview } from "helpers/selectors";
+import getAppointmentsForDay, { getInterview, getInterviewersForDay } from "helpers/selectors";
 import useVisualMode from "hooks/useVisualMode";
 
 export default function Application(props) {
@@ -21,6 +21,8 @@ export default function Application(props) {
   );
 
   const dailyAppoinments = getAppointmentsForDay(state, state.day);
+
+  const dailyInterviewers = getInterviewersForDay(state, state.day)
 
   useEffect(() => {
     Promise.all([
@@ -52,6 +54,7 @@ export default function Application(props) {
         id={appointment.id}
         time={appointment.time}
         interview={interview}
+        interviewers={dailyInterviewers}
       />
     );
   });
