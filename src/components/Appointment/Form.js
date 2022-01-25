@@ -11,7 +11,9 @@ export default function (props) {
         setStudent("");
         setInterviewer(null);
         props.onCancel();
-    }
+    };
+
+    console.log(props.interviewers);
 
     return (
         <main className="appointment__card appointment__card--create" onSubmit={event => event.preventDefault()}>
