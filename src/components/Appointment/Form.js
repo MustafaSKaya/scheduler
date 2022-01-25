@@ -13,7 +13,7 @@ export default function (props) {
         props.onCancel();
     };
 
-    //console.log(props.interviewers);
+    //console.log(props);
 
     return (
         <main className="appointment__card appointment__card--create" onSubmit={event => event.preventDefault()}>
@@ -23,7 +23,7 @@ export default function (props) {
                         className="appointment__create-input text--semi-bold"
                         name="name"
                         type="text"
-                        placeholder="Enter Student Name"
+                        placeholder={props.studentName || "Enter a new name"} 
                         onChange={(event) => setStudent(event.target.value)}
                         value={student}
                     />
