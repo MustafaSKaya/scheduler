@@ -13,7 +13,7 @@ export default function (props) {
         props.onCancel();
     };
 
-    console.log(props.interviewers);
+    //console.log(props.interviewers);
 
     return (
         <main className="appointment__card appointment__card--create" onSubmit={event => event.preventDefault()}>
