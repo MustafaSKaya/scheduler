@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Appointment from "./Appointment";
 import axios from "axios";
 import getAppointmentsForDay, { getInterview, getInterviewersForDay } from "helpers/selectors";
-import useVisualMode from "hooks/useVisualMode";
+
 
 export default function Application(props) {
 
@@ -26,17 +26,35 @@ export default function Application(props) {
       interview: { ...interview }
     };
 
-    console.log(appointment)
+    //console.log(appointment)
 
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
 
-    console.log(appointments)
+    //console.log(appointments)
 
     return (
       axios.put(`/api/appointments/${id}`, appointment)
+        .then((res) => setState((prev) => ({ ...prev, appointments })))
+        .catch((err) => console.log(err.message))
+    );
+  };
+
+  const cancelInterview = (id, interview) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    }
+
+    return (
+      axios.delete(`/api/appointments/${id}`)
         .then((res) => setState((prev) => ({ ...prev, appointments })))
         .catch((err) => console.log(err.message))
     );
@@ -79,6 +97,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={dailyInterviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });

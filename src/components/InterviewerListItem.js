@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import "components/InterviewerListItem.scss"
 
 export default function InterviewerListItem(props) {
-
-    const { interviewer, setInterviewer} = useState()
     
     let listClass = classNames('interviewers__item', { "interviewers__item--selected": props.selected });
 
