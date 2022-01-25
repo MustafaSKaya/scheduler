@@ -5,6 +5,7 @@ import Show from './Show';
 import Empty from './Empty';
 import Form from './Form';
 import useVisualMode from "hooks/useVisualMode";
+import Status from './Status';
 
 export default function Appointment(props) {
 
@@ -46,7 +47,7 @@ export default function Appointment(props) {
         />
       )}
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back(EMPTY)} onSave={save}/>}
-      {mode === SAVING }
+      {mode === SAVING && <Status message={SAVING}/>}
     </Fragment>
   )
 };
