@@ -34,7 +34,7 @@ export default function (props) {
                         className="appointment__create-input text--semi-bold"
                         name="name"
                         type="text"
-                        placeholder={props.student || "Enter a new name"} 
+                        placeholder="Enter Student Name"
                         onChange={(event) => setStudent(event.target.value)}
                         value={student}
                         data-testid="student-name-input"
