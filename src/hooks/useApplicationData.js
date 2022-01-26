@@ -1,4 +1,4 @@
-import react, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
@@ -31,7 +31,7 @@ export default function useApplicationData() {
 
     return (
       axios.put(`/api/appointments/${id}`, appointment)
-        .then((res) => setState((prev) => ({ ...prev, appointments })))
+        .then((res) => setState((prev) => ({ ...prev, appointments, days: updateSpots(appointments) })))
     );
   };
 
@@ -48,7 +48,7 @@ export default function useApplicationData() {
 
     return (
       axios.delete(`/api/appointments/${id}`)
-        .then((res) => setState((prev) => ({ ...prev, appointments })))
+        .then((res) => setState((prev) => ({ ...prev, appointments, days: updateSpots(appointments) })))
     );
   };
 
@@ -74,6 +74,24 @@ export default function useApplicationData() {
         console.error(err);
       });
   }, []);
+
+  const updateSpots = (appointments) => {
+
+    const targetedDay = state.day;
+    const daysArray = [...state.days];
+    const targetedDaysIndexVal = daysArray.findIndex((day) => day.name === targetedDay);
+    const theDaysObject = daysArray[targetedDaysIndexVal];
+    const targetedDaysAppointments = theDaysObject.appointments;
+    let availableSpots = 0;
+    for (const currentDayAppointment of targetedDaysAppointments) {
+      if (appointments[currentDayAppointment].interview === null) {
+          availableSpots++;
+      }
+    };
+    daysArray[targetedDaysIndexVal].spots = availableSpots;
+    
+    return daysArray;
+  };
 
   return {
     state,
