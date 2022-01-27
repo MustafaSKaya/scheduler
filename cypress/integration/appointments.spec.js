@@ -6,7 +6,7 @@ describe("Appointment", () => {
         cy.contains("Monday"); 
     });
 
-    it("Should book an interview", () => {
+    it("should book an interview", () => {
         cy.get("[alt=Add]")
             .first()
             .click();
