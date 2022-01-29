@@ -49,6 +49,11 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_DELETE, true));
   };
 
+  const closeTheError = () => {
+    back();
+    back();
+  };
+
   return (
     <Fragment>
       <Header time={props.time}></Header>
@@ -66,7 +71,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message="Deleting" />}
       {mode === CONFIRM && <Confirm message="Are you sure you would like to delete?" onConfirm={deleteInterview} onCancel={back} />}
       {mode === EDIT && <Form student={props.interview.student} interviewerId={props.interview.interviewer.id} interviewers={props.interviewers} onSave={save} onCancel={back} />}
-      {mode === ERROR_SAVE && <Error message="Could not save appointment" onClose={back}/>}
+      {mode === ERROR_SAVE && <Error message="Could not save appointment" onClose={closeTheError}/>}
       {mode === ERROR_DELETE && <Error message="Could not delete appointment" onClose={() => transition(SHOW)}/>}
     </Fragment>
   )
