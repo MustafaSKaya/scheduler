@@ -27,14 +27,10 @@ export default function Appointment(props) {
 
   const save = (name, interviewer) => {
 
-    console.log(name, interviewer);
-
     const interview = {
       student: name,
       interviewer
     };
-
-    console.log(interview)
 
     transition(SAVING);
 
@@ -70,7 +66,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message="Deleting" />}
       {mode === CONFIRM && <Confirm message="Are you sure you would like to delete?" onConfirm={deleteInterview} onCancel={back} />}
       {mode === EDIT && <Form student={props.interview.student} interviewerId={props.interview.interviewer.id} interviewers={props.interviewers} onSave={save} onCancel={back} />}
-      {mode === ERROR_SAVE && <Error message="Could not save appointment" onClose={() => transition(SHOW)}/>}
+      {mode === ERROR_SAVE && <Error message="Could not save appointment" onClose={back}/>}
       {mode === ERROR_DELETE && <Error message="Could not delete appointment" onClose={() => transition(SHOW)}/>}
     </Fragment>
   )

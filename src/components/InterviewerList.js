@@ -5,7 +5,6 @@ import InterviewerListItem from "./InterviewerListItem";
 import PropTypes from "prop-types";
 
 export default function InterviewerList(props) {
-    //console.log(props);
 
     return (
         <section className="interviewers"  >

@@ -4,6 +4,30 @@
 
 Mainly using React alongside with many tools, I manage to build and test a Scheduler application that allows users to book and cancel appointments with interviewers. We combine a concise API with a WebSocket server to build a realtime experience.
 
+## Setup
+
+Install dependencies with `npm install`.
+
+## Running Webpack Development Server
+
+```sh
+npm start
+```
+
+- Quick note; for application to work as intended, user should run the same code(npm start) in scheduler.api at the same time. 
+
+## Running Jest Test Framework
+
+```sh
+npm test
+```
+
+## Running Storybook Visual Testbed
+
+```sh
+npm run storybook
+```
+
 ## Features
 
 - Application can arrange appointments from Monday to Friday depending on available spots.
@@ -40,25 +64,3 @@ Mainly using React alongside with many tools, I manage to build and test a Sched
 
 ![Cypress](public/images/14.png)
 ![Jest](public/images/13.png)
-
-## Setup
-
-Install dependencies with `npm install`.
-
-## Running Webpack Development Server
-
-```sh
-npm start
-```
-
-## Running Jest Test Framework
-
-```sh
-npm test
-```
-
-## Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```

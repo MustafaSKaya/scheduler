@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
@@ -14,20 +14,17 @@ export default function useApplicationData() {
     setState({ ...state, day })
   );
 
-  const bookInterview = (id, interview) => {
+  const bookInterview = (id, interview) => { 
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
     };
 
-    //console.log(appointment)
-
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
-
-    //console.log(appointments)
 
     return (
       axios.put(`/api/appointments/${id}`, appointment)
@@ -62,7 +59,6 @@ export default function useApplicationData() {
       axios.get("api/interviewers")
     ])
       .then(response => {
-        //console.log(response);
         setState(prev => ({
           ...prev,
           days: response[0].data,
